@@ -1,9 +1,0 @@
-__pycache__/
-backup/
-mask_all/
-mask_end/
-train_all/
-train_end/
-
-
-*.keras
