@@ -9,50 +9,50 @@ O projeto tem como objetivo segmentar células provenientes de experimentos de m
 # Problema
 
 - Imagens ruidosas devido ao aumento de ganho necessário para manter altas taxas de aquisição (FPS) sob limitações de iluminação do microscópio.
-
 - Células ocupando uma fração extremamente pequena da imagem (≈ 0,2% da área total).
-
 - Forte desbalanceamento entre pixels de fundo e objeto, dificultando a aquisição de mascaras com alta qualidade.
 
 # Dados
 
 - Modalidade: Microscopia óptica sem contraste de fase
-
-- Formatos: .png, .tif, .bmp
-
-- Resolução original: 720 × 540 pixels
-
+- Formatos: .png, .tif, .bm
+- Resolução original: 720 × 540 pixel
 - Máscaras: Anotação manual binária utilizando o software: <a href="https://github.com/bnsreenu/digitalsreeni-image-annotator">digitalsreeni-image-annotator</a>.
 
 # Metodologia
 
 ## Pré-processamento
 
-- Normalização por média e desvio padrão
-
-- Padronização de dimensões via recortes locais
+- Normalização por média e desvio padrã
+- Padronização de dimensões via recortes locai
 
 ## Data Augmentation
 
-- Rotações
-
+- Rotaçõe
 - Flips horizontais e verticais
-
 - Deslocamentos em altura e largura (height/width shift)
 
 ## Arquitetura
 
 - U-Net reduzida
-
 - 5 níveis de encoder e decoder
-
 - Número máximo de filtros: 512
 
 ## Função de Perda e Métrica
 
 - Função de perda: Dice Loss
-
 - Métrica principal: Dice Coefficient
+
+
+## Estratégia de Slicing (Sliced Inference)
+
+- Divisão das imagens originais em patches sobrepostos de 128 × 128 pixels
+- Inferência local em cada patch utilizando a arquitetura U-Net reduzida
+- Reconstrução da máscara final por fusão das predições sobrepostas
+- Redução do impacto do desbalanceamento espacial, originalmente de aproximadamente 0,20% de pixels relevantes por imagem
+- Aumento efetivo da proporção de pixels relevantes para cerca de 4,85% durante o treinamento
+
+
 
 # Resultados
 ## Resultados Qualitativos
@@ -65,32 +65,23 @@ A Figura 1 apresenta um frame bruto e um recorte ampliado de uma célula individ
 
 <p align="center"> <img src="Figs/predic_vs_manual.png" width="500"> </p> <p align="center"> <em>Figura 1 — Frame original do experimento e zoom em uma célula individual.</em> </p>
 
-## Desbalanceamento Espacial
-
-No frame utilizado na Figura 1, a célula ocupa 794 pixels, enquanto a imagem completa contém 388.800 pixels, resultando em uma proporção de apenas 0,20% de área relevante. Esse cenário inviabiliza o treinamento direto em imagens completas mantendo a qualidade das mascara.
-
-Para contornar esse problema, foi utilizada a abordagem de Sliced Inference, ilustrada na Figura 2.
-
-<p align="center"> <img src="https://raw.githubusercontent.com/obss/sahi/main/resources/sahi-sliced-inference-overview.avif" width="500"> </p> <p align="center"> <em> Figura 2 — Pipeline do Sliced Inference: divisão da imagem em patches, inferência local e reconstrução do resultado final. Ref: <a href="https://github.com/obss/sahi">github.com/obss/sahi</a>. </em> </p>
-
 # Construção do Dataset
 
-Foram gerados recortes de 128 × 128 pixels, com as células centralizadas, formando os conjuntos de treino e validação. Essa escolha:
+Para contrução do Dataset, foram gerados recortes de 128 × 128 pixels, com as células centralizadas, formando os conjuntos de treino e validação, aproveitando as imagens ja rotuladas em seu tamanho original. Desta forma temos:
 
-- É compatível com arquiteturas baseadas em downsampling por potências de 2
+- Compatíbilidade com arquiteturas baseadas em downsampling por potências de 2
 
-- Aumentou a proporção de pixels relevantes para aproximadamente 4,85%
+- Aumento na proporção de pixels relevantes para aproximadamente 4,85%
 
-- Melhorou significativamente a estabilidade do treinamento
+- Melhora significativa na estabilidade do treinamento
 
 <p align="center"> <img src="Figs/Ori_mask_train.png" width="500"> </p> <p align="center"> <em>Figura 3 — Exemplos de imagens de treino e respectivas máscaras binárias.</em> </p>
 
 ## Métricas Quantitativas
+A Figura 4 apresenta a evolução da função de perda durante as épocas de treinamento do modelo, revelando um comportamento estável e convergente. Observa-se uma redução rápida e contínua da perda ao longo das épocas iniciais, atingindo seu platô por volta da época 10, na qual o valor mínimo registrado foi de 0,0598.
 
-Dice médio no conjunto de validação: XX
+<p align="center"> <img src="Figs/Loss.png" width="500"> </p> <p align="center"> <em>Figura 4 — Curvas de perda para os conjuntos de treinamento e validação.</em> </p>
 
-Distribuição do Dice por imagem
+Em relação ao coeficiente Dice, o modelo atingiu um valor máximo de 0,9416 no conjunto de validação na mesma época. Durante o processo de treinamento, foi empregada a estratégia de redução da taxa de aprendizado (learning rate reduction) com paciência igual a 5 épocas, permitindo ajustes finos dos pesos após a estabilização preliminar do desempenho.
 
-Curvas de treinamento e validação
-
-(Inserir gráficos aqui)
+<p align="center"> <img src="Figs/cof_dice.png" width="500"> </p> <p align="center"> <em>Figura 5 — Curvas do coeficiente Dice para os conjuntos de treinamento e validação.</em> </p>

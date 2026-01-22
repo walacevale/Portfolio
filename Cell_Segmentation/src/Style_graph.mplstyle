@@ -1,0 +1,64 @@
+# Matplotlib style for scientific plotting
+# This is the base style for "SciencePlots"
+# see: https://github.com/garrettj403/SciencePlots
+
+# Set color cycle: blue, green, yellow, red, violet, gray
+axes.prop_cycle : cycler('color', ['0C5DA5', '00B945', 'FF9500', 'FF2C00', '845B97', '474747', '9e9e9e'])
+
+# Set default figure size
+figure.figsize : 8, 6
+
+# Set x axis
+xtick.direction : in
+xtick.major.size : 6
+xtick.major.width : 1
+xtick.minor.size : 3
+xtick.minor.width : 1
+xtick.minor.visible : True
+xtick.top : True
+xtick.major.pad: 6
+
+# Set y axis
+ytick.direction : in
+ytick.major.size : 6
+ytick.major.width : 1
+ytick.minor.size : 3
+ytick.minor.width : 1
+ytick.minor.visible : True
+ytick.right : True
+
+# Set line widths
+axes.linewidth : 2
+grid.linewidth : 0.5
+lines.linewidth : 3.
+
+#Set markers
+lines.markersize: 8
+lines.markeredgecolor: black 
+
+# Fontsizes
+xtick.labelsize : 20
+ytick.labelsize : 20
+legend.fontsize : 17
+legend.title_fontsize : 16
+axes.titlesize : 25
+axes.labelsize : 25
+
+
+# Remove legend frame
+legend.frameon : False
+
+# Always save as 'tight'
+savefig.bbox : tight
+savefig.pad_inches : 0.05
+
+# Use serif fonts
+font.serif : cmr10, Computer Modern Serif, DejaVu Serif
+font.family : serif
+axes.formatter.use_mathtext : True
+mathtext.fontset : cm
+font.weight: bold
+
+# Use LaTeX for math formatting
+text.usetex : True
+text.latex.preamble : \usepackage{amsmath} \usepackage{amssymb} \boldmath
