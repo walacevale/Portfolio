@@ -48,18 +48,17 @@ O projeto tem como objetivo segmentar células provenientes de experimentos de m
 
 - Divisão das imagens originais em patches sobrepostos de 128 × 128 pixels
 - Inferência local em cada patch utilizando a arquitetura U-Net reduzida
-- Reconstrução da máscara final por fusão das predições sobrepostas
-- Redução do impacto do desbalanceamento espacial, originalmente de aproximadamente 0,20% de pixels relevantes por imagem
-- Aumento efetivo da proporção de pixels relevantes para cerca de 4,85% durante o treinamento
+- Reconstrução da máscara final por fusão das predições sobrepostas, utilizando normalização pela contagem de contribuições por pixel.
+- Aumento efetivo da proporção de pixels relevantes de 0.20% para 4,85% durante o treinamento
 
 
 
 # Resultados
 ## Resultados Qualitativos
 
-O Vídeo 1 apresenta uma sequência de imagens adquiridas diretamente do experimento de microfluídica.
+O Vídeo 1 apresenta uma sequência de imagens adquiridas diretamente do experimento de microfluídica e sua respectiva mascara em vermelho.
 
-<p align="center"> <img src="Figs/gif_run_cell.gif" width="500"> </p> <p align="center"> <em>Vídeo 1 — Sequência temporal de imagens adquiridas diretamente do experimento.</em> </p>
+<p align="center"> <img src="Figs/gif_run_cell_overlay.gif" width="450"> </p> <p align="center"> <em>Vídeo 1 — Sequência temporal de imagens adquiridas diretamente do experimento.</em> </p>
 
 A Figura 1 apresenta um frame bruto e um recorte ampliado de uma célula individual. O contorno em verde corresponde à máscara de referência (ground truth), enquanto o contorno em vermelho indica a segmentação predita pelo modelo.
 

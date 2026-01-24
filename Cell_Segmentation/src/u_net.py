@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers, Model
 
-def unet_reduzida(input_shape=(128, 128, 1)):
+def unet_small(input_shape=(128, 128, 1)):
     inputs = layers.Input(input_shape)
 
     # ---------- Encoder ----------
