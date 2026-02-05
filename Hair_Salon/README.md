@@ -33,10 +33,9 @@ As features utilizadas incluem:
 
 No notebook **01_data_exploration.ipynb** foram feitas as seguintes análises:
 
+- Identificação e interpretação de valores ausentes
 - Distribuição de faltas por período do dia e dia da semana
 - Testes estatísticos (qui-quadrado) entre variáveis categóricas e no-show
-- Análise da variável `recency` (dias desde último agendamento)
-- Identificação e interpretação de valores ausentes
 
 ---
 
@@ -45,7 +44,7 @@ No notebook **01_data_exploration.ipynb** foram feitas as seguintes análises:
 No notebook **02_data_preprocessing_and_feature.ipynb** foram realizadas:
 
 - Tratamento semântico de valores ausentes (ex: clientes sem histórico anterior)
-- Criação de variáveis derivadas, tais como:
+- Criação de variáveis, tais como:
   - `noshow_rate` = taxa histórica de no-shows por cliente
   - `receipt_per_service` = receita média por serviço
 - Seleção final de features para modelagem
@@ -69,14 +68,14 @@ O notebook **03_modeling_and_evaluation.ipynb** contém:
 | Random Forest       | 0.60             | 0.60               | 0.91     |
 | Gradient Boosting   | **0.64**         | **0.64**           | **0.92** |
 
-O **Gradient Boosting Classifier** foi escolhido como modelo final por apresentar melhor equilíbrio entre recall e precisão na classe minoritária (*no-show*).
+O **Gradient Boosting Classifier** foi escolhido como modelo final por apresentar melhor equilíbrio entre recall, F1-Score e precisão na classe minoritária (*no-show*).
 
 
 ---
 
 ##  Métricas de avaliação de modelo
 
-Para problemas desbalanceados como no-show, métricas como precisão global não são adequadas. As métricas principais utilizadas são:
+Para problemas desbalanceados como no-show, métricas como precisão **global** não são adequadas. As métricas principais utilizadas são:
 
 - **Precision**: proporção de no-shows corretamente identificados entre os previstos
 - **Recall**: proporção de no-shows verdadeiros que o modelo conseguiu identificar
@@ -86,7 +85,7 @@ Para problemas desbalanceados como no-show, métricas como precisão global não
 ---
 ## Principais insights de negócios
 
-Os principais insights obtidos a partir da Análise Exploratória de Dados, om foco em padrões de no-show (não comparecimento) e seus potenciais impactos no negócio do salão.
+Os principais insights obtidos a partir da Análise Exploratória de Dados, com foco em padrões de no-show (não comparecimento) e seus potenciais impactos no negócio do salão.
 
 **O dataset apresenta forte desbalanceamento entre comparecimentos e no-shows**
 
@@ -102,15 +101,13 @@ Os principais insights obtidos a partir da Análise Exploratória de Dados, om f
 
 Ao analisar o horário do agendamento (book_tod), observa-se que:
 
-- O cálculo do p-valor resultou em 0,446, indicando que não há evidência estatística suficiente para rejeitar a hipótese nula.
+- O cálculo do p-valor resultou em `0.446,` indicando que não há evidência estatística suficiente para rejeitar a hipótese nula.
 
 - Portanto, não é possível afirmar que o período do dia tenha influência significativa sobre a ocorrência de no-show.
 
 <p align="center"> <img src="figs/Booking_Period.png" width="450"> </p> <p align="center"> </p>
 
-**O dia da semana está associado a diferenças estatisticamente relevantes no no-show**
-
-O teste chi-quadrado resultou em p-valor = 0,026, indicando a existência de diferenças estatisticamente significativas entre os dias da semana. A seguir, é possível identificar quais dias contribuem mais para essa diferença utilizando a análise dos resíduos.
+**O Domingo está associado a diferenças estatisticamente relevantes no no-show**
 
 A distribuição de no-show ao longo da semana (book_dow) mostra que:
 
@@ -143,6 +140,7 @@ Ao analisar o intervalo entre agendamento e cancelamento (Days), observa-se que:
 - A maioria dos cancelamentos ocorre com poucos dias de antecedência(primeira semana).
 
 - Esse comportamento indica uma janela curta de reação operacional.
+
 <p align="center"> <img src="figs/between_booking_and_cancellation.png" width="650"> </p> <p align="center"> </p>
 
 
@@ -167,7 +165,7 @@ Ao analisar o intervalo entre agendamento e cancelamento (Days), observa-se que:
 ---
 ##  Impacto nos negócios
 
-Sem qualquer modelo preditivo, os no-shows representam uma perda potencial de:
+Sem qualquer modelo preditivo, os no-shows representam uma **perda potencial** de:
 
 > **R$ 8.866,98**
 
@@ -179,7 +177,7 @@ Com o modelo de **Gradient Boosting**, que apresenta *recall* de ~64% para a cla
 - Remarcações estratégicas
 - Ajustes na gestão da agenda
 
-Isso permitiria recuperar potencialmente até **R$ 5.674,87** da receita que seria perdida.
+Isso permitiria **recuperar potencialmente** até **R$ 5.674,87** da receita que seria perdida.
 
 
 
