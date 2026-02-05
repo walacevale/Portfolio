@@ -106,8 +106,7 @@ Ao analisar o horário do agendamento (book_tod), observa-se que:
 
 - Portanto, não é possível afirmar que o período do dia tenha influência significativa sobre a ocorrência de no-show.
 
-<p align="center"> <img src="figs/Booking_Period.png
-" width="450"> </p> <p align="center"> </p>
+<p align="center"> <img src="figs/Booking_Period.png" width="450"> </p> <p align="center"> </p>
 
 **O dia da semana está associado a diferenças estatisticamente relevantes no no-show**
 
@@ -121,11 +120,9 @@ A distribuição de no-show ao longo da semana (book_dow) mostra que:
 
 - Esse insight pode apoiar decisões como remarcações estratégicas e realocação planeja.
 
-<p align="center"> <img src="figs/Booking_Week.png
-" width="450"> </p> <p align="center"> </p>
+<p align="center"> <img src="figs/Booking_Week.png" width="450"> </p> <p align="center"> </p>
 
-<p align="center"> <img src="figs/Appointment_Status.png
-" width="450"> </p> <p align="center"> </p>
+<p align="center"> <img src="figs/Appointment_Status.png" width="450"> </p> <p align="center"> </p>
 
 **Horários específicos concentram maior volume de agendamentos**
 
@@ -137,8 +134,7 @@ A análise da variável Time evidencia que:
 
 - Podem ser adotadas estratégias como o reagendamento de clientes com maior probabilidade de falta para horários de menor demanda, com o objetivo de reduzir o impacto operacional dos no-shows.
 
-<p align="center"> <img src="figs/Booking_time.png
-" width="550"> </p> <p align="center"> </p>
+<p align="center"> <img src="figs/Booking_time.png" width="550"> </p> <p align="center"> </p>
 
 **Cancelamentos tendem a ocorrer próximos à data do agendamento**
 
@@ -147,8 +143,7 @@ Ao analisar o intervalo entre agendamento e cancelamento (Days), observa-se que:
 - A maioria dos cancelamentos ocorre com poucos dias de antecedência(primeira semana).
 
 - Esse comportamento indica uma janela curta de reação operacional.
-<p align="center"> <img src="figs/between_booking_and_cancellation.png
-" width="650"> </p> <p align="center"> </p>
+<p align="center"> <img src="figs/between_booking_and_cancellation.png" width="650"> </p> <p align="center"> </p>
 
 
 **Taxa de no-show varia de forma não linear com a recência do cliente**
@@ -160,8 +155,7 @@ Ao analisar o intervalo entre agendamento e cancelamento (Days), observa-se que:
 
 - Para clientes mais esporádicos (acima de 8 dias desde o último agendamento), a taxa de no-show volta a níveis semelhantes aos observados nos clientes mais recorrentes, sugerindo um comportamento mais previsível e estável.
 
-<p align="center"> <img src="figs/Days_since_last_appointment.png
-" width="450"> </p> <p align="center"> </p>
+<p align="center"> <img src="figs/Days_since_last_appointment.png" width="450"> </p> <p align="center"> </p>
 
 **O tipo do último serviço contratado não está associado ao no-show**
 
