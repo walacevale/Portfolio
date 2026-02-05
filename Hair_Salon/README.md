@@ -31,7 +31,7 @@ As features utilizadas incluem:
 
 ## Análise Exploratória de Dados
 
-No notebook **01_exploratory_analysis.ipynb** foram feitas as seguintes análises:
+No notebook **01_data_exploration.ipynb** foram feitas as seguintes análises:
 
 - Distribuição de faltas por período do dia e dia da semana
 - Testes estatísticos (qui-quadrado) entre variáveis categóricas e no-show
@@ -42,7 +42,7 @@ No notebook **01_exploratory_analysis.ipynb** foram feitas as seguintes análise
 
 ## Engenharia de dados
 
-No notebook **02_feature_engineering.ipynb** foram realizadas:
+No notebook **02_data_preprocessing_and_feature.ipynb** foram realizadas:
 
 - Tratamento semântico de valores ausentes (ex: clientes sem histórico anterior)
 - Criação de variáveis derivadas, tais como:
@@ -56,7 +56,7 @@ No notebook **02_feature_engineering.ipynb** foram realizadas:
 
 ##  Modelagem
 
-O notebook **03_modeling.ipynb** contém:
+O notebook **03_modeling_and_evaluation.ipynb** contém:
 
 - Separação treino/teste
 - Pipelines com pré-processamento (OneHotEncoder + StandardScaler)
