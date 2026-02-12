@@ -3,6 +3,20 @@
 Este projeto realiza uma análise exploratória de dados do Google Analytics, utilizando o dataset público `ga_sessions_20170801`. O objetivo é responder perguntas de negócio sobre aquisição, engajamento e conversão de usuários em diferentes canais.
 
 ---
+
+| Variável          | Tipo                  | Descrição                                                                                                                  |
+| ----------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `visitNumber`     | Inteiro               | Número da visita do usuário. Indica quantas sessões aquele visitante já realizou até aquele momento (1 = primeira visita). |
+| `channelGrouping` | Categórica | Canal de aquisição agrupado pelo GA (ex: Organic Search, Direct, Referral, Social, Paid Search). |
+| `source`          | Categórica | Origem do tráfego (ex: google, youtube.com, facebook.com).                                       |
+| `medium`          | Categórica | Meio de aquisição (organic, cpc, referral, none).                                                |
+| `pageviews`               | Inteiro                   | Número de páginas visualizadas na sessão.                                          | Proxy de engajamento. Valores altos indicam navegação mais profunda.                                                      |
+| `bounces`                 | Binária (0 ou 1)          | Indica se a sessão foi um *bounce* (1 = saiu após uma única página sem interação). | Mede baixa interação. Alta taxa pode indicar tráfego pouco qualificado.                                                   |
+| `transactions`            | Inteiro                   | Número de transações realizadas na sessão.                                         | Indicador direto de conversão.                                                                                            |
+| `timeOnSite`              | Inteiro (segundos)        | Tempo total da sessão no site.                                                     | Outra métrica de engajamento. Pode ter assimetria forte (cauda longa).                                                    |
+| `totalTransactionRevenue` | Numérico (micro-unidades) | Receita total gerada na sessão.                                                    | Variável alvo típica em modelos de revenue/conversão. No dataset do BigQuery vem em micros (÷ 1.000.000 para valor real). |
+
+---
 ## Principais insights de negócios
 
 **Quais canais trazem mais sessões?**
