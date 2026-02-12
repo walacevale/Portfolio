@@ -6,31 +6,31 @@ def set_plot_style():
     mpl.style.use('ggplot')
 
     mpl.rcParams.update({
-        # Fundo
+
         'axes.facecolor': 'white',
 
-        # Spines (contorno)
-        'axes.linewidth': 2.0,          # mais grossas
-        'axes.edgecolor': 'black',      # mais escuras
 
-        # Ticks
+        'axes.linewidth': 2.0,          
+        'axes.edgecolor': 'black',      
+
+
         'xtick.color': 'black',
         'ytick.color': 'black',
-        'xtick.direction': 'in',        # ticks para dentro
+        'xtick.direction': 'in',        
         'ytick.direction': 'in',
         'xtick.major.size': 6,
         'ytick.major.size': 6,
         'xtick.major.width': 1.5,
         'ytick.major.width': 1.5,
 
-        # Grid
+
         'grid.color': 'lightgray',
         'axes.grid': False,
 
-        # Figura
+
         'figure.dpi': 100,
 
-        # Fonte
+
         'font.size': 12,
     })
 
@@ -45,7 +45,6 @@ def set_plot_style():
         font_scale=1.0
     )
 
-    # Garante que todos os spines apareçam
     sns.set_style({
         'axes.spines.top': True,
         'axes.spines.right': True,

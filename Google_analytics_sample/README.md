@@ -1,6 +1,6 @@
 # Análise de Canais e Conversão - Google Analytics Sample
 
-Este projeto realiza uma análise exploratória de dados do Google Analytics, utilizando o dataset público `ga_sessions_20170801`. O objetivo é responder perguntas de negócio sobre aquisição, engajamento e conversão de usuários em diferentes canais.
+Este projeto realiza uma análise exploratória de dados do Google Analytics, utilizando o dataset público `ga_sessions_20170801` e `ga_sessions_20170701-29` O objetivo é responder perguntas de negócio sobre aquisição, engajamento e conversão de usuários em diferentes canais.
 
 ---
 
@@ -17,6 +17,7 @@ Este projeto realiza uma análise exploratória de dados do Google Analytics, ut
 | `totalTransactionRevenue` | Numérico (micro-unidades) | Receita total gerada na sessão.                                                    | Variável alvo típica em modelos de revenue/conversão. No dataset do BigQuery vem em micros (÷ 1.000.000 para valor real). |
 
 ---
+
 ## Principais insights de negócios
 
 **Quais canais trazem mais sessões?**
@@ -65,7 +66,7 @@ Este projeto realiza uma análise exploratória de dados do Google Analytics, ut
 
 ---
 
-**Sessões com mais interações (pageviews) têm maior probabilidade de conversão?**
+**Sessões com mais interações (pageviews) têm maior probabilidade de conversão? e durante os dias da semana? **
 
 **Variável de interesse:** `pageviews`  
 **Condição de conversão:** `transactions > 0`
@@ -82,4 +83,9 @@ Este projeto realiza uma análise exploratória de dados do Google Analytics, ut
 - Probabilidade de efeito (pageviews maiores nos grupos de conversão): 0.97
 
 **Interpretação:**  
-Sessões com maior número de pageviews estão fortemente associadas a conversões, mostrando que maior interação tende a aumentar a probabilidade de compra. Embora não seja possível afirmar causalidade direta, o padrão é estatisticamente robusto.
+Sessões com maior número de pageviews estão fortemente associadas a conversões, mostrando que maior interação tende a aumentar a probabilidade de compra. Embora não seja possível afirmar causalidade direta, o padrão é estatisticamente robusto. 
+
+Também confirmamos essa afirmação por meio da análise das medianas de pageviews por dia da semana, ao longo de um mês, que evidenciou uma associação entre volume de navegação e conversão. Sessões que resultaram em transação apresentam medianas entre 21 e 25 páginas visualizadas, enquanto sessões sem transação permanecem entre 1 e 2 páginas. Essa diferença é consistente em todos os dias da semana, indicando que o número de páginas visualizadas é um forte indicador de engajamento e está associado a uma maior probabilidade de conversão.
+
+**Gráfico:**  
+<p align="center"> <img src="figs\medina_week.png" width="550"> </p> <p align="center"> </p>
